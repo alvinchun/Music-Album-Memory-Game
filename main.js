@@ -62,6 +62,7 @@ let gameBoard = cardDeck.concat(cardDeck);
 let firstPick = "";
 let secondPick = "";
 let count = 0;
+let delay = 1300;
 //Radomizing Cards
 gameBoard.sort(function() {
   return 0.5 - Math.random();
@@ -73,8 +74,17 @@ gameBoard.forEach(function(album) {
   const card = document.createElement("div");
   card.classList.add("card");
   card.dataset.title = album.title;
+
+  const back = document.createElement('div')
+  back.classList.add("back");
+
+  const face = document.createElement('div')
+  face.classList.add('face')
   card.style.backgroundImage = `url(${album.img})`;
+
   grid.appendChild(card);
+  card.appendChild(back);
+  card.appendChild(face);
 });
 
 let firstTarget = null;
@@ -99,11 +109,11 @@ grid.addEventListener("click", function(event) {
     }
     if (firstPick !== "" && secondPick !== "") {
       if (firstPick === secondPick) {
-        match();
+        setTimeout(matched, delay);
+        setTimeout(resetPicks, delay);
         // matchSong();
-        resetPicks();
       } else {
-        resetPicks();
+        setTimeout(resetPicks, delay);
       }
     }
     firstTarget = clicked;
@@ -159,14 +169,14 @@ grid.addEventListener("click", function(event) {
 //   }
 // };
 
-function match() {
+let matched = function() {
   let selected = document.querySelectorAll(".selected");
   selected.forEach(function(card) {
     card.classList.add("matched");
   });
 };
 
-function resetPicks() {
+let resetPicks = function() {
   firstPick = '';
   secondPick = '';
   count = 0;
