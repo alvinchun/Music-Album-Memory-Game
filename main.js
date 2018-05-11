@@ -77,7 +77,7 @@ gameBoard.forEach(function(album) {
 
   const back = document.createElement("div");
   back.classList.add("back");
-  card.style.backgroundImage = `url(${album.img})`;
+  back.style.backgroundImage = `url(${album.img})`;
 
   grid.appendChild(card);
   card.appendChild(front);
@@ -94,7 +94,7 @@ grid.addEventListener("click", function(event) {
   let clicked = event.target;
 
   // Do not allow the grid section itself to be selected; only select divs inside the grid
-  if (clicked === firstPick || clicked.parentNode.classList.contains("card")) {
+  if (clicked.nodeName === 'SECTION' || clicked.parentNode.classList.contains("selected") || clicked === firstPick) {
     return;
   }
   if (count < 2) {
