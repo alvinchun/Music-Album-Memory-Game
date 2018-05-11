@@ -14,21 +14,26 @@ h1{
   margin-left: 0;
   margin-right: 0;
   font-weight: bold;
+  -webkit-animation: slide-fwd-center 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	 animation: slide-fwd-center 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
+
+@-webkit-keyframes h2{0%{-webkit-transform:translateZ(0);transform:translateZ(0)}100%{-webkit-transform:translateZ(160px);transform:translateZ(160px)}}@keyframes slide-fwd-center{0%{-webkit-transform:translateZ(0);transform:translateZ(0)}100%{-webkit-transform:translateZ(160px);transform:translateZ(160px)}}
 
 body {
+  font-family: 'Titan One', cursive;
+  font-size: 30px;
   margin: 20px 0;
-  background-image: url("Images/space.jpg") ;
-  max-width: 100%;
-  max-height: 100%;
-  background-position: center ;
-  background-size: cover;
+  background-image: url('Images/rave1.jpeg'), url("Images/space.jpg");
+  max-width: 100%, 100%;
+  max-height: 100%, 100%;
+  background-position: bottom, center;
+  background-size: contain, auto;
 }
-
 
 #game{
   position: center;
-  margin: 200px;
+  margin: 100px;
 }
 .grid {
   max-width: 960px;
@@ -65,10 +70,8 @@ body {
 
 .back {
   transform: rotateY(180deg);
-  background-color: white;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
+  background-size: cover;
+  /* background-position: center; */
 }
 
 .selected {
