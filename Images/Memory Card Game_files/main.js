@@ -1,125 +1,140 @@
 const cardDeck = [
   {
-    name: "Alan Walker",
-    img: "Images/AlanWalker.jpeg"
-  },
-  {
-    name: "Avicii",
-    img: "images/Avicii.jpg"
-  },
-  {
-    name: "Chainsmokers",
-    img: "images/Chainsmokers.jpg"
-  },
-  {
-    name: "DavidGuetta",
-    img: "images/DavidGuetta.jpg"
-  },
-  {
-    name: "Galantis",
-    img: "images/Galantis.jpg"
-  }, //-------------------------------
-  {
-    name: "Martin Garrix",
-    img: "images/MartinGarrix.jpeg"
-  },
-  {
-    name: "Tiesto",
-    img: "images/Tiesto.jpg"
-  },
-  {
-    name: "Tritonal",
-    img: "images/Tritonal.jpg"
-  },
-  {
-    name: "Vicetone",
-    img: "images/Vicetone.jpeg"
-  },
-  {
-    name: "AlanWalker-album",
-    img: "Images/AlanWalker-album.jpg"
-  },
-  {
-    name: "Avicii",
-    img: "images/Avicii-album.jpg"
-  },
-  {
-    name: "Chainsmokers",
-    img: "images/Chainsmokers-album.jpg"
-  },
-  {
-    name: "DavidGuetta",
-    img: "images/DavidGuetta-album.jpg"
-  },
-  {
-    name: "Galantis",
-    img: "images/Galantis-album.jpg"
-  }, //-------------------------------
-  {
-    name: "Martin Garrix",
+    title: "Animals",
     img: "images/MartinGarrix-album.jpg"
   },
   {
-    name: "Tiesto",
+    title: "Boom",
     img: "images/Tiesto-album.jpg"
   },
   {
-    name: "Tritonal",
-    img: "images/Tritonal-album.jpeg"
+    title: "Closer",
+    img: "images/Chainsmokers-album.jpg"
   },
   {
-    name: "Vicetone",
+    title: "Faded",
+    img: "Images/AlanWalker-album.jpg"
+  },
+  {
+    title: "Getaway",
+    img: "images/Tritonal-album.jpeg"
+  }, //-------------------------------
+  {
+    title: "WorkHardPlayHard",
+    img: "images/DavidGuetta-album.jpg"
+  },
+  {
+    title: "Runaway",
+    img: "images/Galantis-album.jpg"
+  },
+  {
+    title: "Tremble",
     img: "images/Vicetone-album.jpg"
+  },
+  {
+    title: "WakeMeUp",
+    img: "images/Avicii-album.jpg"
   }
 ];
 
+let sound1 = document.getElementById("song1");
+let sound2 = document.getElementById("song2");
+let sound3 = document.getElementById("song3");
+let sound4 = document.getElementById("song4");
+let sound5 = document.getElementById("song5");
+let sound6 = document.getElementById("song6");
+let sound7 = document.getElementById("song7");
+let sound8 = document.getElementById("song8");
+let sound9 = document.getElementById("song9");
+
 // Grab the div with an id of root
-const game = document.getElementById('game');
+const gameSet = document.getElementById("game");
 
 // Create a section with a class of grid
-const grid = document.createElement('section');
-grid.setAttribute('class', 'grid');
+const grid = document.createElement("section");
+grid.classList.add("grid");
+gameSet.appendChild(grid);
 
-// Append the grid section to the game div
-game.appendChild(grid);
+let gameBoard = cardDeck.concat(cardDeck);
 
-// For each item in the cardsArray array...
-cardDeck.forEach(item => {
-  // Create a div
-  const card = document.createElement('div');
-
-  // Apply a card class to that div
-  card.classList.add('card');
-
-  // Set the data-name attribute of the div to the cardsArray name
-  card.dataset.name = item.name;
-
-  // Apply the background image of the div to the cardsArray image
-  card.style.backgroundImage = `url(${item.img})`;
-
-  // Append the div to the grid section
-  grid.appendChild(card);
+let firstPick = "";
+let secondPick = "";
+let count = 0;
+let delay = 1300;
+//Radomizing Cards
+gameBoard.sort(function() {
+  return 0.5 - Math.random();
 });
 
+// Displaying each image in the game board
+gameBoard.forEach(function(album) {
+  // const card = document.querySelector('div#game > section.grid > div')
+  const card = document.createElement("div");
+  card.classList.add("card");
+  card.dataset.title = album.title;
 
+  const front = document.createElement("div");
+  front.classList.add("front");
 
+  const back = document.createElement("div");
+  back.classList.add("back");
+  card.style.backgroundImage = `url(${album.img})`;
 
+  grid.appendChild(card);
+  card.appendChild(front);
+  card.appendChild(back);
+});
 
+let firstTarget = null;
+let secondTarget = null;
 
-// const $game = $('#game');
-// const $grid = $("<section></section>").addClass("grid");
+grid.addEventListener("click", function(event) {
+  // The event target is our clicked item
+  let clicked = event.target;
 
-// $game.append($grid);
+  // Do not allow the grid section itself to be selected; only select divs inside the grid
+  if (clicked.nodeName === "SECTION" || clicked === firstTarget) {
+    return;
+  }
+  if (count < 2) {
+    count++;
+    if (count === 1) {
+      firstPick = clicked.parentNode.dataset.title;
+      console.log(firstPick);
+      clicked.parentNode.classList.add("selected");
+    } else {
+      secondPick = clicked.parentNode.dataset.title;
+      console.log(secondPick);
+      clicked.parentNode.classList.add("selected");
+    }
+    if (firstPick !== "" && secondPick !== "") {
+      if (firstPick === secondPick) {
+        setTimeout(matched, delay);
+        setTimeout(resetPicks, delay);
+        // matchSong();
+      } else {
+        setTimeout(resetPicks, delay);
+      }
+    }
+    firstTarget = clicked;
+    // secondTarget = clicked;
+  }
+});
 
-// // For each item in the cardsArray array...
-// for(item of cardDeck){
+let matched = function() {
+  let selected = document.querySelectorAll(".selected");
+  selected.forEach(function(card) {
+    card.classList.add("matched");
+  });
+};
 
-// // Create a div
-// const card = $('<div></div>').addClass('card');
-// card.dataset.name = item.name;
+let resetPicks = function() {
+  firstPick = "";
+  secondPick = "";
+  count = 0;
 
-// // Apply the background image of the div to the cardsArray image
-// card.style.backgroundImage = `${item.img}`;
-// $grid.append($card);
-
-
+  let selected = document.querySelectorAll(".selected");
+  selected.forEach(function(card) {
+    card.classList.remove("selected");
+  });
+};

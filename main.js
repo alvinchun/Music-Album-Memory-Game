@@ -47,8 +47,6 @@ let sound7 = document.getElementById("song7");
 let sound8 = document.getElementById("song8");
 let sound9 = document.getElementById("song9");
 
-
-
 // Grab the div with an id of root
 const gameSet = document.getElementById("game");
 
@@ -61,8 +59,7 @@ let gameBoard = cardDeck.concat(cardDeck);
 
 let firstPick = "";
 let secondPick = "";
-let count = 0;
-let delay = 1300;
+
 //Radomizing Cards
 gameBoard.sort(function() {
   return 0.5 - Math.random();
@@ -75,37 +72,41 @@ gameBoard.forEach(function(album) {
   card.classList.add("card");
   card.dataset.title = album.title;
 
-  const back = document.createElement('div')
-  back.classList.add("back");
+  const front = document.createElement("div");
+  front.classList.add("front");
 
-  const face = document.createElement('div')
-  face.classList.add('face')
+  const back = document.createElement("div");
+  back.classList.add("back");
   card.style.backgroundImage = `url(${album.img})`;
 
   grid.appendChild(card);
+  card.appendChild(front);
   card.appendChild(back);
-  card.appendChild(face);
 });
 
 let firstTarget = null;
 let secondTarget = null;
+let count = 0;
+let delay = 1300;
 
 grid.addEventListener("click", function(event) {
   // The event target is our clicked item
   let clicked = event.target;
 
   // Do not allow the grid section itself to be selected; only select divs inside the grid
-  if (clicked.nodeName === "SECTION" || clicked === firstTarget) {
+  if (clicked === firstPick || clicked.parentNode.classList.contains("card")) {
     return;
   }
   if (count < 2) {
     count++;
     if (count === 1) {
-      firstPick = clicked.dataset.title;
-      clicked.classList.add("selected");
+      firstPick = clicked.parentNode.dataset.title;
+      console.log(firstPick);
+      clicked.parentNode.classList.add("selected");
     } else {
-      secondPick = clicked.dataset.title;
-      clicked.classList.add("selected");
+      secondPick = clicked.parentNode.dataset.title;
+      console.log(secondPick);
+      clicked.parentNode.classList.add("selected");
     }
     if (firstPick !== "" && secondPick !== "") {
       if (firstPick === secondPick) {
@@ -121,54 +122,6 @@ grid.addEventListener("click", function(event) {
   }
 });
 
-    // if (firstPick === secondPick) {
-    //   match();
-    //   resetPicks();
-    // } else {
-    //   resetPicks();
-    // }
-// function matchSong(){
-//   if (cardDeck[0] === cardDeck[0])
-//   {
-//     sound1.play();
-//   }
-//   else if (cardDeck[1] === cardDeck[1])
-//   {
-//     sound2.play();
-//   }
-//   else if (cardDeck[2] === cardDeck[2])
-//   {
-//     sound3.play();
-//   }
-//   else if (cardDeck[3] === cardDeck[3])
-//   {
-//     sound4.play();
-//   }
-//   else if (cardDeck[4] === cardDeck[4])
-//   {
-//     sound5.play();
-//   }
-//   else if (cardDeck[5] === cardDeck[5])
-//   {
-//     sound6.play();
-//   }
-//   else if (cardDeck[6] === cardDeck[6])
-//   {
-//     sound7.play();
-//   }
-//   else if (cardDeck[7] === cardDeck[7])
-//   {
-//     sound8.play();
-//   }
-//   else if (cardDeck[8] === cardDeck[8])
-//   {
-//     sound9.play();
-//   }
-//   else{
-//     undefined;
-//   }
-// };
-
 let matched = function() {
   let selected = document.querySelectorAll(".selected");
   selected.forEach(function(card) {
@@ -177,15 +130,12 @@ let matched = function() {
 };
 
 let resetPicks = function() {
-  firstPick = '';
-  secondPick = '';
+  firstPick = "";
+  secondPick = "";
   count = 0;
 
-  let selected = document.querySelectorAll('.selected')
-  selected.forEach( function(card){
-  card.classList.remove('selected')
-
-  })
+  let selected = document.querySelectorAll(".selected");
+  selected.forEach(function(card) {
+    card.classList.remove("selected");
+  });
 };
-
-
