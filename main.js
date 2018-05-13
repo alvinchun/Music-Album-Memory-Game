@@ -86,10 +86,37 @@ gameBoard.forEach(function(album) {
 let firstTarget = null;
 let secondTarget = null;
 let count = 0;
+let counter = document.querySelector(".moves");
 let delay = 1300;
+let second = 0,
+  minute = 0,
+  hour = 0;
+let timer = document.querySelector(".timer");
+timer.innerHTML = "0 mins 0 secs";
 
-grid.addEventListener("click", function(event) {
-  let clicked = event.target;
+let interval;
+
+
+
+
+function startTimer() {
+
+  interval = setInterval(function() {
+    timer.innerHTML = minute + "mins " + second + "secs";
+    second++;
+    if (second == 60) {
+      minute++;
+      second = 0;
+    }
+    if (minute == 60) {
+      hour++;
+      minute = 0;
+    }
+  }, 1000);
+}
+
+let gameStart = function(event) {
+let clicked = event.target;
 
   // Do not allow the grid section itself to be selected; only select divs inside the grid
   if (
@@ -97,32 +124,31 @@ grid.addEventListener("click", function(event) {
     clicked.parentNode.classList.contains("selected") ||
     clicked === firstPick
   ) {
+    moveCounter();
     return;
   }
   if (count < 2) {
     count++;
     if (count === 1) {
       firstPick = clicked.parentNode.dataset.title;
-      console.log(firstPick);
       clicked.parentNode.classList.add("selected");
     } else {
       secondPick = clicked.parentNode.dataset.title;
-      console.log(secondPick);
       clicked.parentNode.classList.add("selected");
     }
     if (firstPick !== "" && secondPick !== "") {
       if (firstPick === secondPick) {
         setTimeout(matched, delay);
         setTimeout(resetPicks, delay);
-        // matchSong();
       } else {
         setTimeout(resetPicks, delay);
       }
     }
     firstTarget = clicked;
-    // secondTarget = clicked;
   }
-});
+};
+
+grid.addEventListener("click", gameStart);
 
 let matched = function() {
   let selected = document.querySelectorAll(".selected");
@@ -142,32 +168,11 @@ let resetPicks = function() {
   });
 };
 
-let second = 0,
-  minute = 0,
-  hour = 0;
-let timer = document.querySelector(".timer");
-let interval;
-
-function startTimer() {
-  interval = setInterval(function() {
-    timer.innerHTML = minute + "mins " + second + "secs";
-    second++;
-    if (second == 60) {
-      minute++;
-      second = 0;
-    }
-    if (minute == 60) {
-      hour++;
-      minute = 0;
-    }
-  }, 1000);
-}
-
 function moveCounter() {
-  moves++;
-  counter.innerHTML = moves;
+  count++;
+  counter.innerHTML = count;
   //start timer on first click
-  if (moves == 1) {
+  if (count == 1) {
     second = 0;
     minute = 0;
     hour = 0;

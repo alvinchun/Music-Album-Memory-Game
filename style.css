@@ -11,24 +11,57 @@ body {
 	margin: 0;
 	padding: 0;
 }
+main {
+    position: relative;
+    background: rgba(175, 175, 175, .5);
+    border-radius: 20px;
+    height: 450px;
+    max-width: 500px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 200px;
+    padding: 20px;
+
+}
+
+form{
+  text-align: center;
+}
+.btn {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  position: relative;
+}
 
 body {
   font-family: 'Titan One', cursive;
   font-size: 30px;
   margin: 0 auto;
-  /* background-image: url('Images/rave1.jpeg'), url("Images/space.jpg"); */
-  /* background-position: bottom, center; */
-  background-size: cover, contain;
+  background-image: url("Images/space.jpg");
+  background: cover;
 }
 
 h1{
-  color:  black;
+  color: white;
   text-align: center;
   margin: 0 auto;
   margin-top: 100px;
   font-weight: bold;
   -webkit-animation: slide-fwd-center 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	 animation: slide-fwd-center 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.moves .timer{
+  color: lavender;
 }
 
 /* @-webkit-keyframes h2{0%{-webkit-transform:translateZ(0);transform:translateZ(0)}100%{-webkit-transform:translateZ(160px);transform:translateZ(160px)}}@keyframes slide-fwd-center{0%{-webkit-transform:translateZ(0);transform:translateZ(0)}100%{-webkit-transform:translateZ(160px);transform:translateZ(160px)}} */
@@ -91,8 +124,7 @@ h1{
   opacity: 0;
 };
 .score-panel {
-	text-align: left;
-	margin-bottom: 10px;
+	text-align: center;
 }
 
 .score-panel .stars {
@@ -127,50 +159,6 @@ h1{
  */
 
 
-.overlay {
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background: rgba(0, 0, 0, 0.7);
-	transition: opacity 500ms;
-	visibility: hidden;
-	opacity: 0;
-}
-
-.overlay:target {
-	visibility: visible;
-	opacity: 1;
-}
-
-.popup {
-	margin: 70px auto;
-	padding: 20px;
-	background: #ffffff;
-	border-radius: 5px;
-	width: 85%;
-	position: relative;
-	transition: all 5s ease-in-out;
-	font-family: 'Gloria Hallelujah', cursive;
-}
-
-.popup h2 {
-	margin-top: 0;
-	color: #333;
-	font-family: Tahoma, Arial, sans-serif;
-}
-
-.popup .close {
-	position: absolute;
-	top: 20px;
-	right: 30px;
-	transition: all 200ms;
-	font-size: 30px;
-	font-weight: bold;
-	text-decoration: none;
-	color: #333;
-}
 
 .popup .close:hover {
 	color: #E5F720;
@@ -193,7 +181,7 @@ h1{
 }
 
 #play-again {
-	background-color: #141214;
+	background-color: white;
 	padding: 0.7rem 1rem;
 	font-size: 1.1rem;
 	display: block;
