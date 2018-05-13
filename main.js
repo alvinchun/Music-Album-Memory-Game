@@ -67,7 +67,6 @@ gameBoard.sort(function() {
 
 // Displaying each image in the game board
 gameBoard.forEach(function(album) {
-  // const card = document.querySelector('div#game > section.grid > div')
   const card = document.createElement("div");
   card.classList.add("card");
   card.dataset.title = album.title;
@@ -90,11 +89,14 @@ let count = 0;
 let delay = 1300;
 
 grid.addEventListener("click", function(event) {
-  // The event target is our clicked item
   let clicked = event.target;
 
   // Do not allow the grid section itself to be selected; only select divs inside the grid
-  if (clicked.nodeName === 'SECTION' || clicked.parentNode.classList.contains("selected") || clicked === firstPick) {
+  if (
+    clicked.nodeName === "SECTION" ||
+    clicked.parentNode.classList.contains("selected") ||
+    clicked === firstPick
+  ) {
     return;
   }
   if (count < 2) {
@@ -139,3 +141,46 @@ let resetPicks = function() {
     card.classList.remove("selected");
   });
 };
+
+let second = 0,
+  minute = 0,
+  hour = 0;
+let timer = document.querySelector(".timer");
+let interval;
+
+function startTimer() {
+  interval = setInterval(function() {
+    timer.innerHTML = minute + "mins " + second + "secs";
+    second++;
+    if (second == 60) {
+      minute++;
+      second = 0;
+    }
+    if (minute == 60) {
+      hour++;
+      minute = 0;
+    }
+  }, 1000);
+}
+
+function moveCounter() {
+  moves++;
+  counter.innerHTML = moves;
+  //start timer on first click
+  if (moves == 1) {
+    second = 0;
+    minute = 0;
+    hour = 0;
+    startTimer();
+  }
+}
+
+// Resources:
+// https://scotch.io/tutorials/how-to-build-a-memory-matching-game-in-javascript
+// https://www.taniarascia.com/how-to-create-a-memory-game-super-mario-with-plain-javascript/
+// https://developer.mozilla.org/en-US/docs/Web/CSS/::before
+// http://archive.modernweb.design/29-building-a-card-matching-game
+// https://codepen.io/jamesbarnett/pen/kiGsl
+// https://codepen.io/mel/pen/Brads
+// https://developer.mozilla.org/en-US/docs/Web/CSS/::before
+// https://developer.mozilla.org/en-US/docs/Web/CSS/rotateY
