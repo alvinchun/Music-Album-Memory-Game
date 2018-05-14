@@ -122,10 +122,9 @@ let clicked = event.target;
   if (
     clicked.nodeName === "SECTION" ||
     clicked.parentNode.classList.contains("selected") ||
-    clicked === firstPick
-  ) {
-    moveCounter();
+    clicked === firstPick) {
     return;
+
   }
   if (count < 2) {
     count++;
