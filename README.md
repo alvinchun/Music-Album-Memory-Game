@@ -1,6 +1,10 @@
 # Unit-One-Project
 Music Album Matching Game
 Link: https://git.generalassemb.ly/pages/alvinchun911/Project1/
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2a94e74fc35407a67d04afddc6dd6a2bb610266b
 # Technologies
 - Vanillas Javascript (ES6)
 - VS Code: A text/code editor I used to make codes for Memory Game.
