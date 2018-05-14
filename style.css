@@ -51,9 +51,9 @@ form{
 body {
   font-family: 'Titan One', cursive;
   font-size: 30px;
-  min-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  background-image: url("images1/space.jpg");
+  background-image: url("images/space.jpg");
   background-position: center;
   background: cover;
 }
@@ -130,7 +130,7 @@ h1{
 } */
 
 .front {
-  background: url('images1/MusicLogo.png') no-repeat center center / contain;
+  background: url('images/MusicLogo.png') no-repeat center center / contain;
   background-size: 100px 100px;
 }
 
