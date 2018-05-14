@@ -1,39 +1,39 @@
 const cardDeck = [
   {
     title: "Animals",
-    img: "images/MartinGarrix-album.jpg"
+    img: "images1/martingarrix-album.jpg"
   },
   {
     title: "Boom",
-    img: "images/Tiesto-album.jpg"
+    img: "images1/tiesto-album.jpg"
   },
   {
     title: "Closer",
-    img: "images/Chainsmokers-album.jpg"
+    img: "images1/chainsmokers-album.jpg"
   },
   {
     title: "Faded",
-    img: "Images/AlanWalker-album.jpg"
+    img: "Images1/alanWalker-album.jpg"
   },
   {
     title: "Getaway",
-    img: "images/Tritonal-album.jpeg"
+    img: "images1/tritonal-album.jpeg"
   }, //-------------------------------
   {
     title: "WorkHardPlayHard",
-    img: "images/DavidGuetta-album.jpg"
+    img: "images1/davidGuetta-album.jpg"
   },
   {
     title: "Runaway",
-    img: "images/Galantis-album.jpg"
+    img: "images1/galantis-album.jpg"
   },
   {
     title: "Tremble",
-    img: "images/Vicetone-album.jpg"
+    img: "images1/vicetone-album.jpg"
   },
   {
     title: "WakeMeUp",
-    img: "images/Avicii-album.jpg"
+    img: "images1/avicii-album.jpg"
   }
 ];
 
