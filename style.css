@@ -51,7 +51,7 @@ form{
 body {
   font-family: 'Titan One', cursive;
   font-size: 30px;
-  max-width: 900px;
+  min-width: 800px;
   margin: 0 auto;
   background-image: url("Images/space.jpg");
   background-position: center;
@@ -111,7 +111,20 @@ h1{
 .front {
   position: absolute;
   backface-visibility: hidden;
+  transition: scale
 }
+
+.front:hover{
+
+  background-color: #FFD700;
+  transform: scale(1.3);
+  transition: all 0.3s ease;
+}
+/* .back:hover{
+  background-color: #FFD700;
+  transform: scale(1.3);
+  transition: all 0.3s ease;
+} */
 
 .front {
   background: url('Images/MusicLogo.png') no-repeat center center / contain;
