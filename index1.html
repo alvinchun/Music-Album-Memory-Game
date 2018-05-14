@@ -11,24 +11,36 @@
     crossorigin="anonymous"></script>
   <title>Memory Card Game</title>
 </head>
+<div class="container">
+  <header>
+    <h1>TEST YOUR MEMORY</h1>
+  </header>
 
-<body>
-  <main>
-    <div>
-      <div class="display-message">
-        <h2>Instructions</h2>
-        <br> 1. Click on a music box
-        <br><br>2. Keep revealing boxes and working your memory to remember each unveiled album jacket.
-        <br><br>3. Match cards properly with less moves and in faster time!
-        <br> Click the button below to begin!</div>
-      <br>
-      <br>
-      <form>
-        <input class="btn" type="button" value="START" onclick="window.location.href='index.html'" />
-      </form>
+  <section class="score-panel">
+
+    <div class="timer">
     </div>
-  </main>
 
+    <div class="restart" onclick=startGame()>
+      <i class="fa fa-repeat"></i>
+    </div>
+
+  </section>
+
+  <div id="game">
+  </div>
+
+      <button id="play-again" onclick="playAgain()">
+        <a href="">🤟🎵 Play Again 🎶🤟</a>
+      </button>
+    </div>
+  </div>
+</div>
+
+<audio autoplay loop>
+  <source src="Song/Tremble.mp3" id='song1'></source>
+</audio>
+<script src="main.js"></script>
 </body>
 
 </html>
