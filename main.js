@@ -124,7 +124,6 @@ let clicked = event.target;
     clicked.parentNode.classList.contains("selected") ||
     clicked === firstPick) {
     return;
-
   }
   if (count < 2) {
     count++;
