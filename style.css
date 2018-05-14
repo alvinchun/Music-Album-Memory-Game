@@ -119,11 +119,14 @@ h1{
   background-color: #FFD700;
   transform: scale(1.3);
   transition: all 0.3s ease;
+  border: 1px solid yellow;
 }
+
 /* .back:hover{
   background-color: #FFD700;
   transform: scale(1.3);
   transition: all 0.3s ease;
+  border: 10px solid yellow;
 } */
 
 .front {
